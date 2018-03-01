@@ -118,4 +118,35 @@ def print_mislabelled_sentences(X, Y_true, Y_pred):
             print("---------------------------------------")
             mislabelled_indices.append(i)
                
-    return mislabelled_indices         
+    return mislabelled_indices        
+
+# function to plot history
+def plot_history(data):
+    
+    train_loss = data.history['loss']
+    val_loss = data.history['val_loss']
+    num_epochs = len(train_loss)
+    xc = range(num_epochs)
+    plt.figure(figsize=(10,5))
+    plt.plot(xc, train_loss, label='train_loss')
+    plt.plot(xc, val_loss, label='val_loss')
+    plt.legend(loc=0)
+    
+    plt.xlabel("Number of Epochs = {}".format(num_epochs))
+    plt.ylabel('Loss')
+    plt.title('loss')
+    plt.grid(True)
+    plt.style.use('seaborn')
+
+
+    train_acc = data.history['acc']
+    val_acc = data.history['val_acc']
+    xc = range(num_epochs)
+    plt.figure(figsize=(10,5))
+    plt.plot(xc, train_acc, label='train_acc')
+    plt.plot(xc, val_acc, label='val_acc')
+    plt.legend(loc=0)
+    plt.xlabel("Number of Epochs = {}".format(num_epochs))
+    plt.ylabel('Accuracy')
+    plt.title('Accuracy')
+    plt.grid(True)
